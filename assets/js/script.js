@@ -207,4 +207,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+   function updateClock() {
+    const now = new Date();
+
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0 => 12
+
+    const timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${ampm}`;
+    const dateString = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+
+    document.getElementById('clock-date').textContent = `${timeString} | ${dateString}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock(); // gọi ngay để không phải đợi 1s
 });

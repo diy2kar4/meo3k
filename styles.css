@@ -732,10 +732,6 @@ body.video-normal #video-overlay {
       width: 80%;
     }
 
-    #clock {
-      font-size: 12px;
-      top: 10px;
-    }
 
     .discord-widget {
       flex-direction: column;
@@ -770,22 +766,6 @@ body.video-normal #video-overlay {
     width: 100vw;
     height: 100vh;
   }
-
-  #clock {
-  color: white;
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: 'Consolas', monospace;
-  text-align: center;
-  z-index: 9999;
-  background-color: transparent; /* đảm bảo không có nền đen */
-}
 
 .kill-item {
   display: flex;
@@ -960,4 +940,19 @@ footer {
 #media-toggle-buttons i:hover {
   transform: scale(1.1);
 }
+
+#clock-date {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 4px;
+    z-index: 9999;
+    white-space: nowrap;
+  }
 
