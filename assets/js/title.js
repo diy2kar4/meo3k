@@ -1,11 +1,11 @@
 var titles = [
   "@",
-  "@d",
-  "@di",
-  "@diy",
-  "@diy2",
-  "@diy2k",
-  "@diy2k4",
+  "@m",
+  "@ma",
+  "@mao",
+  "@maom",
+  "@maoma",
+  "@maomao",
 ];
 
 function changeTitle() {

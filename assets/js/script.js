@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
       
-      i am a cheater
+      Your IP is being traced...
     `;
   }
 
@@ -194,38 +194,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   limitVolume(1);
-
-  const kills = [
-    ["diy", ["./assets/pfp/deagle.png", "./assets/pfp/awp.png", "./assets/pfp/g3sg1.png", "./assets/pfp/r8.png", "./assets/pfp/ak47.png", "./assets/pfp/ssg08.png"], "You", ["./assets/pfp/headshot.png", "./assets/pfp/wallbang.png"]],
-    ["diy2k4", ["./assets/pfp/deagle.png", "./assets/pfp/awp.png", "./assets/pfp/g3sg1.png", "./assets/pfp/r8.png", "./assets/pfp/ak47.png", "./assets/pfp/ssg08.png"], "Valve Corporation", ["./assets/pfp/headshot.png", "./assets/pfp/wallbang.png"]],
-    ["kn1zMonster", ["./assets/pfp/deagle.png", "./assets/pfp/awp.png", "./assets/pfp/g3sg1.png", "./assets/pfp/r8.png", "./assets/pfp/ak47.png", "./assets/pfp/ssg08.png"], "Gabe Newell", ["./assets/pfp/headshot.png", "./assets/pfp/wallbang.png"]],
-    ["Me", ["./assets/pfp/deagle.png", "./assets/pfp/awp.png", "./assets/pfp/g3sg1.png", "./assets/pfp/r8.png", "./assets/pfp/ak47.png", "./assets/pfp/ssg08.png"], "Bot T", ["./assets/pfp/headshot.png", "./assets/pfp/wallbang.png"]],
-    ["sn4ke", ["./assets/pfp/deagle.png", "./assets/pfp/awp.png", "./assets/pfp/g3sg1.png", "./assets/pfp/r8.png", "./assets/pfp/ak47.png", "./assets/pfp/ssg08.png"], "VACNET 3.0", ["./assets/pfp/headshot.png", "./assets/pfp/wallbang.png"]]
-  ];
-
-  function addKillFeed(tPlayer, weaponSrc, ctPlayer, extras = []) {
-    const killFeed = document.getElementById("kill-feed");
-    const div = document.createElement("div");
-    div.className = "kill-item";
-    div.innerHTML = `
-      <span class="player t kill-section">
-        <img src="./assets/pfp/faceit.png" alt="faceit" width="28" style="margin-right: 4px; vertical-align: middle;">
-        ${tPlayer}
-      </span>
-      <span class="weapons kill-section">
-        <img src="${weaponSrc}" height="26" style="vertical-align: middle;">
-        ${extras.map(src => {
-          const isSmallIcon = src.includes("headshot") || src.includes("wallbang");
-          const width = isSmallIcon ? 26 : 34;
-          const height = isSmallIcon ? 24 : 32;
-          return `<img src="${src}" width="${width}" height="${height}" style="vertical-align: middle;">`;
-        }).join('')}
-      </span>
-      <span class="player ct kill-section">${ctPlayer}</span>
-    `;
-    killFeed.appendChild(div);
-    setTimeout(() => div.remove(), 3000);
-  }
 
   window.addEventListener('wheel', function (e) {
     if (e.ctrlKey) {
@@ -239,18 +207,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  fetch("https://ipinfo.io/json?token=6e9609d324940d")
-    .then(res => res.json())
-    .then(data => {
-      const infoBox = document.getElementById("ip-info-container");
-      const [latitude, longitude] = data.loc.split(",");
-      infoBox.style.fontSize = "12px";
-      infoBox.innerHTML = `
-        <strong>IP:</strong> ${data.ip}<br>
-        <strong>City:</strong> ${data.city}, ${data.region}, ${data.country}<br>
-        <strong>Timezone:</strong> ${data.timezone}<br>
-        <strong>Location:</strong> ${latitude}, ${longitude}
-      `;
-    })
-    .catch(err => console.error("IP Fetch Error:", err));
 });

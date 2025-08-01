@@ -7,7 +7,7 @@ document.addEventListener("keydown", function (e) {
   if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["I", "C", "J", "S"].includes(e.key)) || (e.ctrlKey && e.key.toLowerCase() === "u")) {
     e.preventDefault();
     alert("Hãy thương Dev đi mà :(");
-    window.location.href = "chuidebug.html";
+    window.location.href = "";
   }
 });
 
@@ -18,7 +18,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
   setInterval(() => {
     if (window.outerHeight - window.innerHeight > threshold) {
       alert("Tắt DevTools đi thg ngu");
-      window.location.href = "chuidebug.html";
+      window.location.href = "";
     }
   }, 1000);
 })();
@@ -38,7 +38,7 @@ window.addEventListener("focus", () => blurOverlay.style.opacity = 0);
   setInterval(() => {
     if (devtools()) {
       alert("DevTools bị chặn.");
-      window.location.href = "chuidebug.html";
+      window.location.href = "";
     }
   }, 1000);
 })();
@@ -49,7 +49,7 @@ window.addEventListener("focus", () => blurOverlay.style.opacity = 0);
     get() {
       // Bị gọi khi console.log mở ra
       alert("Tắt DevTools đi thg ngu!");
-      window.location.href = "chuidebug.html";
+      window.location.href = "";
     }
   });
   setInterval(() => console.log(bait), 1000);
@@ -67,7 +67,7 @@ window.addEventListener("focus", () => blurOverlay.style.opacity = 0);
   setInterval(() => {
     if (Function.prototype.toString !== original) {
       alert("Đừng cố gắng nữa!");
-      window.location.href = "chuidebug.html";
+      window.location.href = "";
     }
   }, 1000);
 })();
@@ -106,6 +106,6 @@ window.addEventListener("focus", () => blurOverlay.style.opacity = 0);
 
 console.log = function () {
   console.warn(">:(");
-  window.location.href = "chuidebug.html";
+  window.location.href = "";
 };
 console.error = console.debug = console.warn = console.info = console.log;
