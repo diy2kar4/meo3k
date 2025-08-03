@@ -27,6 +27,16 @@ document.addEventListener("contextmenu", e => e.preventDefault());
 const blurOverlay = document.getElementById("blur-overlay");
 window.addEventListener("blur", () => blurOverlay.style.opacity = 1);
 window.addEventListener("focus", () => blurOverlay.style.opacity = 0);
+window.addEventListener("blur", () => {
+  blurOverlay.style.opacity = 1;
+  document.getElementById("myVideo")?.pause();
+  document.getElementById("myAudio")?.pause();
+});
+window.addEventListener("focus", () => {
+  blurOverlay.style.opacity = 0;
+  document.getElementById("myVideo")?.play();
+  document.getElementById("myAudio")?.play();
+});
 
 (function(){
   const devtools = () => {
