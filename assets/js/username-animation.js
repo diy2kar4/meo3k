@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
         usernames: [
             "maomao",
             "miêu miêu",
+            "Māo Māo",
+            "Xiaomao",
         ],
         typeSpeed: 100,
         deleteSpeed: 50,

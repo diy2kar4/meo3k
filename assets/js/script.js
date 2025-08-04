@@ -44,39 +44,43 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function handleInput() {
-  terminalContainer.style.display = 'none';
+    // Ẩn background particles khi kết thúc terminal
+    var particlesBg = document.getElementById('particles-js');
+    if (particlesBg) particlesBg.style.display = 'none';
 
-  if (window.startMusicWithRandom) {
-    window.startMusicWithRandom();
-  }
+    terminalContainer.style.display = 'none';
 
-  // 👇 Hiển thị icon toggle khi terminal kết thúc
-  if (window.showMediaToggle) {
-    window.showMediaToggle();
-  }
-
-  blurredBox.style.display = 'block';
-  removeEventListeners();
-
-  const scrollContainer = document.getElementById('scroll-container');
-  if (scrollContainer) {
-    scrollContainer.style.display = 'inline-block';
-
-    const marquee = scrollContainer.querySelector('marquee');
-    if (marquee && typeof marquee.start === 'function') {
-      marquee.stop();
-      setTimeout(() => marquee.start(), 50);
+    if (window.startMusicWithRandom) {
+      window.startMusicWithRandom();
     }
-  }
 
-  let index = 0;
-  setInterval(() => {
-    const [tPlayer, weaponList, ctPlayer, extras] = kills[index];
-    const weaponSrc = weaponList[Math.floor(Math.random() * weaponList.length)];
-    addKillFeed(tPlayer, weaponSrc, ctPlayer, extras);
-    index = (index + 1) % kills.length;
-  }, 1100);
-}
+    // 👇 Hiển thị icon toggle khi terminal kết thúc
+    if (window.showMediaToggle) {
+      window.showMediaToggle();
+    }
+
+    blurredBox.style.display = 'block';
+    removeEventListeners();
+
+    const scrollContainer = document.getElementById('scroll-container');
+    if (scrollContainer) {
+      scrollContainer.style.display = 'inline-block';
+
+      const marquee = scrollContainer.querySelector('marquee');
+      if (marquee && typeof marquee.start === 'function') {
+        marquee.stop();
+        setTimeout(() => marquee.start(), 50);
+      }
+    }
+
+    let index = 0;
+    setInterval(() => {
+      const [tPlayer, weaponList, ctPlayer, extras] = kills[index];
+      const weaponSrc = weaponList[Math.floor(Math.random() * weaponList.length)];
+      addKillFeed(tPlayer, weaponSrc, ctPlayer, extras);
+      index = (index + 1) % kills.length;
+    }, 1100);
+  }
 
   function handleKeyPress(event) {
     if (event.key === 'Enter' && isTerminalDone) {
@@ -226,4 +230,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
   setInterval(updateClock, 1000);
   updateClock(); // gọi ngay để không phải đợi 1s
+
+  // Khởi tạo particles sau khi DOM đã sẵn sàng và thư viện đã load
+  function initParticles() {
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+        opacity: { value: 0.5, random: false },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", out_mode: "out" }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  }
+
+  if (window.particlesJS) {
+    initParticles();
+  } else {
+    var script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js";
+    script.onload = initParticles;
+    document.head.appendChild(script);
+  }
 });
