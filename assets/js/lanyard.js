@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const userId = '985537688159522847';
-  const apiUrl = `https://api.lanyard.rest/v1/users/${userId}`;
+  const apiUrl = `https://api.lanyard.rest/v1/users/985537688159522847`;
   
   const avatar = document.getElementById('discord-avatar');
   const mainProfilePicture = document.getElementById('profile-picture');
