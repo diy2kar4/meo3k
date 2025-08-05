@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleIcon = document.getElementById('toggleIcon');
 
     const mediaPairs = [
-        { video: "./assets/back/fri1.mp4", audio: "./assets/music/frieren.mp3", weight: 25},
-        { video: "./assets/back/maomao.mp4", weight: 75},
+        { video: "./assets/back/fri1.mp4", audio: "./assets/music/frieren.mp3", weight: 15},
+        { video: "./assets/back/maomao.mp4", weight: 85},
     ];
 
     const imageMedia = [
-        { type: 'image', src: './assets/pfp/thao.png'},
+        { type: 'image', src: './assets/pfp/thao.png', weight: 0.1 },
+        { type: 'image', src: './assets/pfp/maomaobg1.jpg', weight: 49.9 },
+        { type: 'image', src: './assets/pfp/maomaobg2.avif', weight: 50 },
     ];
 
     function getWeightedRandomItem(items) {
