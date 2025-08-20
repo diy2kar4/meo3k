@@ -1,3 +1,7 @@
+html {
+  cursor: url('assets/cursor/mao.png'), auto;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -962,3 +966,20 @@ footer {
       height: 100%;
       z-index: 0;
     }
+
+    body.shimeji-pinned iframe {
+        pointer-events: none;
+      }
+    body.shimeji-select-ie {
+        cursor: cell !important;
+      }
+    #shimeji-contextMenu::-webkit-scrollbar {
+        width: 6px;
+      }
+    #shimeji-contextMenu::-webkit-scrollbar-thumb {
+        background-color: rgba(30,30,30,0.6);
+        border-radius: 3px;
+      }
+    #shimeji-contextMenu::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
