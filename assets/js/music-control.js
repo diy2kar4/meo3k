@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const mediaPairs = [
         { video: "./assets/back/fri1.mp4", audio: "./assets/music/frieren.mp3", weight: 10},
-        { video: "./assets/back/maomao.mp4", weight: 45},
-        { video: "./assets/back/dressupdarling.mp4", audio: "./assets/music/dressupdarling.mp3", weight: 45},
+        { video: "./assets/back/maomao.mp4", weight: 30},
+        { video: "./assets/back/dressupdarling.mp4", audio: "./assets/music/dressupdarling.mp3", weight: 30},
+        { video: "./assets/back/tiktok.mp4", audio: "./assets/music/tiktok.mp3", weight: 30},
     ];
 
     const imageMedia = [
