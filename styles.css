@@ -860,7 +860,7 @@ a:hover {
 
 .faceit {
   position: fixed;
-  top: 16px;
+  top: 15px;
   left: 13px;
   background: rgba(0,0,0,0.7);
   color: #fff;
@@ -894,6 +894,100 @@ a:hover {
   height: auto;
   border-radius: 4px;   /* 👈 bo góc 4px, chỉnh theo ý bạn */
 }
+
+.valorant {
+  position: fixed;
+  top: 50px;
+  left: 13px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 16px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.valorant span {
+  display: inline-flex;       /* Để ảnh và text căn giữa theo chiều dọc */
+  align-items: center;
+  gap: 2px;                   /* Khoảng cách giữa icon và text */
+  white-space: nowrap;
+}
+
+.valorant-icon {
+  width: 23px;                /* Kích thước icon */
+  height: auto;
+  object-fit: contain;
+}
+
+.csgo {
+  position: fixed;
+  top: 85px;
+  left: 13px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 16px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.csgo span {
+  display: inline-flex;       /* Để ảnh và text căn giữa theo chiều dọc */
+  align-items: center;
+  gap: 2px;                   /* Khoảng cách giữa icon và text */
+  white-space: nowrap;
+}
+
+.csgo-icon {
+  width: 45px;                /* Kích thước icon */
+  height: auto;
+  object-fit: contain;
+}
+
+.cs2rating.ancient {
+    color: #EB4B4B;
+}
+
+.cs2rating.sm {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    min-width: 35px;
+    height: 20px;
+    padding: 0 8px 0 15px;
+    
+    font-size: 16px;       /* size mặc định cho số 25 */
+    font-weight: bold;
+    line-height: 1;
+    
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    color: #EB4B4B;
+}
+
+.cs2rating.sm small {
+    font-size: 11px;       /* nhỏ hơn số 25 */
+    font-weight: normal;   /* không cần quá đậm */
+    opacity: 0.9;          /* nhẹ nhàng hơn */
+}
+
+
+
 
 footer {
   font-size: 0.8rem;
