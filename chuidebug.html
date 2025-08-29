@@ -42,13 +42,18 @@
   <h1>🚨 Bạn đã bị phát hiện!</h1>
   <p>Trang web không chào đón những người mở DevTools 😡</p>
 
-  <iframe
-    src="https://www.youtube.com/watch?v=7kO_ALcwNAw?autoplay=1&mute=1"
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-  
+  <video id="myVideo" width="560" height="315" autoplay muted loop>
+  <source src="./assets/back/trinhlagi.mp4" type="video/mp4">
+  </video>
+
+  <script>
+    document.addEventListener("click", () => {
+      const video = document.getElementById("myVideo");
+      video.muted = false;
+      video.play();
+    }, { once: true });
+  </script>
+
   <div class="credit-line credit-visible">
     ©2025 MaoMao. Built from the ground up. All rights reserved.
   </div>
