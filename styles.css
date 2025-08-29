@@ -934,7 +934,7 @@ a:hover {
   color: #fff;
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  padding: 4px 8px;
+  padding: 4px 8px;              /* giữ giống faceit, valorant */
   border-radius: 16px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
   z-index: 9999;
@@ -942,52 +942,36 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 6px;
-}
-
-.csgo span {
-  display: inline-flex;       /* Để ảnh và text căn giữa theo chiều dọc */
-  align-items: center;
-  gap: 2px;                   /* Khoảng cách giữa icon và text */
-  white-space: nowrap;
+  min-height: 24px;              /* 👈 cho chiều cao khung đồng bộ */
 }
 
 .csgo-icon {
-  width: 45px;                /* Kích thước icon */
+  width: 35px;                   /* 👈 giảm xuống cùng size faceit/valorant */
   height: auto;
   object-fit: contain;
 }
 
-.cs2rating.ancient {
-    color: #EB4B4B;
-}
-
 .cs2rating.sm {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    
-    min-width: 35px;
-    height: 20px;
-    padding: 0 8px 0 15px;
-    
-    font-size: 16px;       /* size mặc định cho số 25 */
-    font-weight: bold;
-    line-height: 1;
-    
-    background-size: cover;
-    background-position: left center;
-    background-repeat: no-repeat;
-    color: #EB4B4B;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 35px;               /* 👈 tăng width để chữ không bị chật */
+  height: 20px;                  /* 👈 cao hơn (bằng .faceit/.valorant) */
+  padding: 0 8px 0 14px;
+  font-size: 17px;               /* 👈 đồng bộ với text khác */
+  font-weight: bold;
+  line-height: 1;
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  color: #EB4B4B;
 }
 
 .cs2rating.sm small {
-    font-size: 11px;       /* nhỏ hơn số 25 */
-    font-weight: normal;   /* không cần quá đậm */
-    opacity: 0.9;          /* nhẹ nhàng hơn */
+  font-size: 12px;
+  font-weight: normal;
+  opacity: 0.9;
 }
-
-
-
 
 footer {
   font-size: 0.8rem;
