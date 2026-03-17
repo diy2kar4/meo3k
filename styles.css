@@ -398,64 +398,75 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 12px;
   border-radius: 13px;
-  font-style: italic;
   font-size: 14px;
   color: #ccc;
-  min-height: 80px;
+  min-height: 104px;
   overflow: hidden;
 }
 
-#discord-activity-info, #discord-no-activity {
+#discord-activity-info,
+#discord-no-activity {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 8px;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  inset: 0;
+  padding: 12px;
   display: flex;
   align-items: center;
+  transition: opacity 0.35s ease;
 }
 
-#discord-activity-info.hidden, #discord-no-activity.hidden {
+#discord-activity-info.hidden,
+#discord-no-activity.hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+#discord-activity-info {
+  gap: 16px;
 }
 
 #discord-album-art {
   width: 80px;
   height: 80px;
+  border-radius: 12px;
+  flex-shrink: 0;
   background-size: cover;
   background-position: center;
-  border-radius: 12px;
-  margin-right: 16px;
-  flex-shrink: 0;
+  background-repeat: no-repeat;
   background-color: #333;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .discord-activity-content {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  justify-content: center;
+  min-width: 0;
+  flex: 1;
 }
 
 #discord-activity-name {
-  font-weight: bold;
-  font-style: normal;
   font-size: 16px;
+  font-weight: 700;
+  color: #fff;
   margin-bottom: 4px;
-  color: white;
+  font-style: normal;
 }
 
-#discord-activity-state, #discord-activity-details {
+#discord-activity-details,
+#discord-activity-state {
   font-size: 14px;
-  font-style: italic;
   color: #ccc;
   margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#discord-no-activity {
+  justify-content: center;
+  color: #aaa;
+  font-style: italic;
 }
 
 .discord-widget .discord-icon img {
@@ -943,34 +954,6 @@ a:hover {
   align-items: center;
   gap: 6px;
   min-height: 24px;              /* 👈 cho chiều cao khung đồng bộ */
-}
-
-.csgo-icon {
-  width: 35px;                   /* 👈 giảm xuống cùng size faceit/valorant */
-  height: auto;
-  object-fit: contain;
-}
-
-.cs2rating.sm {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  min-width: 35px;               /* 👈 tăng width để chữ không bị chật */
-  height: 20px;                  /* 👈 cao hơn (bằng .faceit/.valorant) */
-  padding: 0 8px 0 14px;
-  font-size: 17px;               /* 👈 đồng bộ với text khác */
-  font-weight: bold;
-  line-height: 1;
-  background-size: cover;
-  background-position: left center;
-  background-repeat: no-repeat;
-  color: #EB4B4B;
-}
-
-.cs2rating.sm small {
-  font-size: 12px;
-  font-weight: normal;
-  opacity: 0.9;
 }
 
 footer {
