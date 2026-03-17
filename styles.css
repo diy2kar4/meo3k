@@ -149,7 +149,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) perspective(1000px);
   width: 500px; 
-  height: 670px;
+  height: 600px;
   background-color: rgba(0, 0, 0, 0.377);
   border-radius: 20px;
   border: 2px solid rgba(150, 150, 150, 0.137);
