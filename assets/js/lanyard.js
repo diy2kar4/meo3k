@@ -17,35 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const syncIndicator = document.getElementById('discord-sync-indicator');
 
+  function setText(el, value) {
+    if (el) el.textContent = value || '';
+  }
+
   function showSyncIndicator() {
-    if (syncIndicator) {
-      syncIndicator.classList.add('active');
-    }
+    if (syncIndicator) syncIndicator.classList.add('active');
   }
 
   function hideSyncIndicator() {
-    if (syncIndicator) {
-      syncIndicator.classList.remove('active');
-    }
-  }
-
-  function setText(el, value) {
-    if (el) {
-      el.textContent = value || '';
-    }
-  }
-
-  function setStatus(status) {
-    const safeStatus = status || 'offline';
-
-    if (statusDot) {
-      statusDot.className = '';
-      statusDot.classList.add(`status-${safeStatus}`);
-    }
-
-    if (statusText) {
-      statusText.textContent = safeStatus.charAt(0).toUpperCase() + safeStatus.slice(1);
-    }
+    if (syncIndicator) syncIndicator.classList.remove('active');
   }
 
   function showActivity() {
@@ -59,15 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function clearAlbumArt() {
-    if (albumArt) {
-      albumArt.style.backgroundImage = '';
-    }
+    if (!albumArt) return;
+    albumArt.style.backgroundImage = '';
+    albumArt.removeAttribute('data-image-source');
   }
 
-  function setAlbumArt(imageUrl) {
+  function setAlbumArt(url, source = '') {
     if (!albumArt) return;
 
-    if (!imageUrl) {
+    if (!url) {
       clearAlbumArt();
       return;
     }
@@ -75,70 +56,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = new Image();
 
     img.onload = () => {
-      albumArt.style.backgroundImage = `url("${imageUrl}")`;
+      albumArt.style.backgroundImage = `url("${url}")`;
+      if (source) {
+        albumArt.dataset.imageSource = source;
+      } else {
+        albumArt.removeAttribute('data-image-source');
+      }
     };
 
     img.onerror = () => {
-      console.warn('Không load được ảnh activity:', imageUrl);
+      console.warn('Không load được ảnh activity:', url);
       clearAlbumArt();
     };
 
-    img.src = imageUrl;
+    img.src = url;
+  }
+
+  function setStatus(status) {
+    const safeStatus = status || 'offline';
+
+    if (statusDot) {
+      statusDot.className = '';
+      statusDot.classList.add(`status-${safeStatus}`);
+    }
+
+    if (statusText) {
+      statusText.textContent =
+        safeStatus.charAt(0).toUpperCase() + safeStatus.slice(1);
+    }
   }
 
   function getDiscordAvatarUrl(discordUser) {
-    if (!discordUser || !discordUser.id || !discordUser.avatar) return '';
-
+    if (!discordUser?.id || !discordUser?.avatar) return '';
     return `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png?size=256`;
-  }
-
-  function getAssetUrl(asset, applicationId) {
-    if (!asset) return '';
-
-    if (asset.startsWith('mp:')) {
-      return `https://media.discordapp.net/${asset.slice(3)}`;
-    }
-
-    if (asset.startsWith('spotify:')) {
-      return `https://i.scdn.co/image/${asset.slice(8)}`;
-    }
-
-    if (asset.startsWith('https://') || asset.startsWith('http://')) {
-      return asset;
-    }
-
-    if (applicationId) {
-      return `https://cdn.discordapp.com/app-assets/${applicationId}/${asset}.png`;
-    }
-
-    return '';
-  }
-
-  function getBestActivityImage(activity) {
-    if (!activity || !activity.assets) return '';
-
-    if (activity.assets.large_image) {
-      return getAssetUrl(activity.assets.large_image, activity.application_id);
-    }
-
-    if (activity.assets.small_image) {
-      return getAssetUrl(activity.assets.small_image, activity.application_id);
-    }
-
-    return '';
-  }
-
-  function getDisplayActivity(activities) {
-    if (!Array.isArray(activities) || activities.length === 0) return null;
-
-    return activities.find((activity) => {
-      if (!activity) return false;
-
-      if (activity.type === 4) return false; // Custom Status
-      if (activity.name === 'Custom Status') return false;
-
-      return true;
-    }) || null;
   }
 
   function updateAvatar(discordUser) {
@@ -155,9 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
       mainProfilePicture.style.opacity = '0.5';
       mainProfilePicture.style.filter = 'blur(2px)';
 
-      const newImg = new Image();
+      const img = new Image();
 
-      newImg.onload = () => {
+      img.onload = () => {
         mainProfilePicture.src = avatarUrl;
         mainProfilePicture.style.opacity = '1';
         mainProfilePicture.style.filter = 'none';
@@ -165,36 +115,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
           mainProfilePicture.style.transform = 'scale(1)';
-          setTimeout(() => {
-            hideSyncIndicator();
-          }, 800);
+          setTimeout(hideSyncIndicator, 800);
         }, 250);
       };
 
-      newImg.onerror = () => {
-        mainProfilePicture.src = './assets/pfp/default.jpg';
+      img.onerror = () => {
         mainProfilePicture.style.opacity = '1';
         mainProfilePicture.style.filter = 'none';
         hideSyncIndicator();
       };
 
-      newImg.src = avatarUrl;
+      img.src = avatarUrl;
     } else {
       hideSyncIndicator();
     }
   }
 
+  function getAssetUrl(asset, applicationId) {
+    if (!asset) return '';
+
+    // Discord media proxy asset
+    if (asset.startsWith('mp:')) {
+      return `https://media.discordapp.net/${asset.slice(3)}`;
+    }
+
+    // Spotify asset
+    if (asset.startsWith('spotify:')) {
+      return `https://i.scdn.co/image/${asset.slice(8)}`;
+    }
+
+    // Direct URL
+    if (asset.startsWith('https://') || asset.startsWith('http://')) {
+      return asset;
+    }
+
+    // Discord application asset
+    if (applicationId) {
+      return `https://cdn.discordapp.com/app-assets/${applicationId}/${asset}.png`;
+    }
+
+    return '';
+  }
+
+  function getBestDiscordImage(activity) {
+    if (!activity?.assets) return '';
+
+    if (activity.assets.large_image) {
+      return getAssetUrl(activity.assets.large_image, activity.application_id);
+    }
+
+    if (activity.assets.small_image) {
+      return getAssetUrl(activity.assets.small_image, activity.application_id);
+    }
+
+    return '';
+  }
+
+  function getDisplayActivity(activities) {
+    if (!Array.isArray(activities) || activities.length === 0) return null;
+
+    return (
+      activities.find((activity) => {
+        if (!activity) return false;
+        if (activity.type === 4) return false; // Custom Status
+        if (activity.name === 'Custom Status') return false;
+        return true;
+      }) || null
+    );
+  }
+
   function renderSpotify(spotify) {
-    if (!spotify || !spotify.track_id) return false;
+    if (!spotify?.track_id) return false;
 
     showActivity();
-
     setText(activityName, spotify.song || 'Spotify');
     setText(activityDetails, spotify.artist || '');
     setText(activityState, spotify.album || '');
 
     if (spotify.album_art_url) {
-      setAlbumArt(spotify.album_art_url);
+      setAlbumArt(spotify.album_art_url, 'spotify');
     } else {
       clearAlbumArt();
     }
@@ -205,23 +204,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderActivity(activity) {
     if (!activity) return false;
 
-    console.log('Activity object:', activity);
-
     showActivity();
 
     setText(activityName, activity.name || 'Unknown Activity');
     setText(activityDetails, activity.details || '');
     setText(activityState, activity.state || '');
 
-    const imageUrl = getBestActivityImage(activity);
+    const imageUrl = getBestDiscordImage(activity);
 
-    console.log('application_id:', activity.application_id);
+    console.log('Activity object:', activity);
+    console.log('application_id:', activity.application_id || '');
     console.log('large_image:', activity.assets?.large_image || '');
     console.log('small_image:', activity.assets?.small_image || '');
     console.log('resolved imageUrl:', imageUrl);
 
     if (imageUrl) {
-      setAlbumArt(imageUrl);
+      setAlbumArt(imageUrl, 'discord');
     } else {
       clearAlbumArt();
     }
