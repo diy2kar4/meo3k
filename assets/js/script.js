@@ -101,13 +101,13 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    let index = 0;
-    setInterval(() => {
-      const [tPlayer, weaponList, ctPlayer, extras] = kills[index];
-      const weaponSrc = weaponList[Math.floor(Math.random() * weaponList.length)];
-      addKillFeed(tPlayer, weaponSrc, ctPlayer, extras);
-      index = (index + 1) % kills.length;
-    }, 1100);
+    //let index = 0;
+    //setInterval(() => {
+    //  const [tPlayer, weaponList, ctPlayer, extras] = kills[index];
+    //  const weaponSrc = weaponList[Math.floor(Math.random() * weaponList.length)];
+    //  addKillFeed(tPlayer, weaponSrc, ctPlayer, extras);
+    //  index = (index + 1) % kills.length;
+    //}, 1100);
 
     if (links) links.classList.add('links--visible');
   }
