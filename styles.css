@@ -1062,3 +1062,15 @@ footer {
   opacity: 0;
   transition: opacity 0.6s ease;
 }
+
+:root{
+  --mc-cyan:#00ffe1;
+  --mc-green:#00ff88;
+  --mc-red:#ff3b3b;
+  --mc-orange:#ff9900;
+  --mc-pink:#ff66cc;
+  --mc-blue:#00bfff;
+  --mc-white:#ffffff;
+  --mc-gray:#444444;
+  --mc-discord:#7289da;
+}

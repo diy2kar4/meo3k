@@ -1,79 +1,145 @@
-// Console information display
-document.addEventListener('DOMContentLoaded', function () {
-
-  // Loaded time
+document.addEventListener("DOMContentLoaded", () => {
   const now = new Date();
-  console.log('%c⏰ Loaded at:', 'color: #ff6600; font-size: 14px; font-weight: bold;');
-  console.log(`%c  ${now.toLocaleString()}`, 'color: #ffffff;');
 
-  // Warning Self-XSS
-  console.log('%c🚨 CẢNH BÁO!', 'color: red; font-size: 20px; font-weight: bold;');
-  console.log('%cĐừng dán bất cứ đoạn mã nào vào đây nếu bạn không hiểu rõ mình đang làm gì.', 'color: red; font-size: 14px;');
-  console.log('%cKẻ xấu có thể đánh cắp token hoặc kiểm soát tài khoản của bạn.', 'color: red; font-size: 14px;');
-  console.log('%cNếu có ai yêu cầu bạn dán gì đó vào đây, HỌ ĐANG LỪA BẠN.', 'color: orange; font-size: 14px;');
+  const css = getComputedStyle(document.documentElement);
 
-  console.log('%c═══════════════════════════════════════════════════════════════', 'color: #00ff00;');
-  console.log('%c⚡ Thanks for visiting my website! ⚡', 'color: #00ffff; font-size: 18px; font-weight: bold;');
-  console.log('%c💡 Tip: Try typing help() for interactive commands!', 'color: #ffff00; font-size: 14px;');
+  const theme = {
+    cyan: css.getPropertyValue("--mc-cyan").trim(),
+    green: css.getPropertyValue("--mc-green").trim(),
+    red: css.getPropertyValue("--mc-red").trim(),
+    orange: css.getPropertyValue("--mc-orange").trim(),
+    pink: css.getPropertyValue("--mc-pink").trim(),
+    blue: css.getPropertyValue("--mc-blue").trim(),
+    white: css.getPropertyValue("--mc-white").trim(),
+    gray: css.getPropertyValue("--mc-gray").trim(),
+    discord: css.getPropertyValue("--mc-discord").trim()
+  };
 
-  console.log(
-  "%c⚠ CẢNH BÁO! %cKhông dán bất kỳ đoạn mã nào vào đây!",
-  "background: red; color: white; font-weight: bold; padding: 4px;",
-  "color: yellow; font-size: 14px;");
+  const line =
+    "════════════════════════════════════════════════════════════";
 
-  console.log('%c🚨 CẢNH BÁO!', 'color: red; font-size: 20px; font-weight: bold;');
-  console.log('%cĐừng dán bất cứ đoạn mã nào vào đây nếu bạn không hiểu rõ mình đang làm gì.', 'color: red; font-size: 14px;');
-  console.log('%cKẻ xấu có thể đánh cắp token hoặc kiểm soát tài khoản của bạn.', 'color: red; font-size: 14px;');
-  console.log('%cNếu có ai yêu cầu bạn dán gì đó vào đây, HỌ ĐANG LỪA BẠN.', 'color: orange; font-size: 14px;');
-
-  console.log('%c═══════════════════════════════════════════════════════════════', 'color: #00ff00;');
-  console.log('%c⚡ Thanks for visiting my website! ⚡', 'color: #00ffff; font-size: 18px; font-weight: bold;');
-  console.log('%c💡 Tip: Try typing help() for interactive commands!', 'color: #ffff00; font-size: 14px;');
+  console.clear();
 
   console.log(
-  "%c⚠ CẢNH BÁO! %cKhông dán bất kỳ đoạn mã nào vào đây!",
-  "background: red; color: white; font-weight: bold; padding: 4px;",
-  "color: yellow; font-size: 14px;");
+    "%c███ THUYSMAO SYSTEM ███",
+    `
+    color:${theme.cyan};
+    font-size:28px;
+    font-weight:bold;
+    text-shadow:0 0 10px ${theme.cyan};
+    letter-spacing:2px;
+    `
+  );
 
-  console.log('%c🚨 CẢNH BÁO!', 'color: red; font-size: 20px; font-weight: bold;');
-  console.log('%cĐừng dán bất cứ đoạn mã nào vào đây nếu bạn không hiểu rõ mình đang làm gì.', 'color: red; font-size: 14px;');
-  console.log('%cKẻ xấu có thể đánh cắp token hoặc kiểm soát tài khoản của bạn.', 'color: red; font-size: 14px;');
-  console.log('%cNếu có ai yêu cầu bạn dán gì đó vào đây, HỌ ĐANG LỪA BẠN.', 'color: orange; font-size: 14px;');
-
-  console.log('%c═══════════════════════════════════════════════════════════════', 'color: #00ff00;');
-  console.log('%c⚡ Thanks for visiting my website! ⚡', 'color: #00ffff; font-size: 18px; font-weight: bold;');
-  console.log('%c💡 Tip: Try typing help() for interactive commands!', 'color: #ffff00; font-size: 14px;');
-
-  console.log(
-  "%c⚠ CẢNH BÁO! %cKhông dán bất kỳ đoạn mã nào vào đây!",
-  "background: red; color: white; font-weight: bold; padding: 4px;",
-  "color: yellow; font-size: 14px;");
-
-  console.log('%c🚨 CẢNH BÁO!', 'color: red; font-size: 20px; font-weight: bold;');
-  console.log('%cĐừng dán bất cứ đoạn mã nào vào đây nếu bạn không hiểu rõ mình đang làm gì.', 'color: red; font-size: 14px;');
-  console.log('%cKẻ xấu có thể đánh cắp token hoặc kiểm soát tài khoản của bạn.', 'color: red; font-size: 14px;');
-  console.log('%cNếu có ai yêu cầu bạn dán gì đó vào đây, HỌ ĐANG LỪA BẠN.', 'color: orange; font-size: 14px;');
-
-  console.log('%c═══════════════════════════════════════════════════════════════', 'color: #00ff00;');
-  console.log('%c⚡ Thanks for visiting my website! ⚡', 'color: #00ffff; font-size: 18px; font-weight: bold;');
-  console.log('%c💡 Tip: Try typing help() for interactive commands!', 'color: #ffff00; font-size: 14px;');
+  console.log(`%c${line}`, `color:${theme.gray};`);
 
   console.log(
-  "%c⚠ CẢNH BÁO! %cKhông dán bất kỳ đoạn mã nào vào đây!",
-  "background: red; color: white; font-weight: bold; padding: 4px;",
-  "color: yellow; font-size: 14px;");
+    `%c⏰ LOADED AT: %c${now.toLocaleString()}`,
+    `color:${theme.orange};font-weight:bold;font-size:14px;`,
+    `color:${theme.white};font-size:14px;`
+  );
 
-  console.log('%c🚨 CẢNH BÁO!', 'color: red; font-size: 20px; font-weight: bold;');
-  console.log('%cĐừng dán bất cứ đoạn mã nào vào đây nếu bạn không hiểu rõ mình đang làm gì.', 'color: red; font-size: 14px;');
-  console.log('%cKẻ xấu có thể đánh cắp token hoặc kiểm soát tài khoản của bạn.', 'color: red; font-size: 14px;');
-  console.log('%cNếu có ai yêu cầu bạn dán gì đó vào đây, HỌ ĐANG LỪA BẠN.', 'color: orange; font-size: 14px;');
-
-  console.log('%c═══════════════════════════════════════════════════════════════', 'color: #00ff00;');
-  console.log('%c⚡ Thanks for visiting my website! ⚡', 'color: #00ffff; font-size: 18px; font-weight: bold;');
-  console.log('%c💡 Tip: Try typing help() for interactive commands!', 'color: #ffff00; font-size: 14px;');
+  console.log(`%c${line}`, `color:${theme.gray};`);
 
   console.log(
-  "%c⚠ CẢNH BÁO! %cKhông dán bất kỳ đoạn mã nào vào đây!",
-  "background: red; color: white; font-weight: bold; padding: 4px;",
-  "color: yellow; font-size: 14px;");
+    "%c🚨 SECURITY WARNING",
+    `
+    background:${theme.red};
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    padding:6px 12px;
+    `
+  );
+
+  console.log(
+    "%cDevTools này dành cho developer.",
+    `color:${theme.red};font-size:14px;`
+  );
+
+  console.log(
+    "%cNếu ai yêu cầu bạn dán code vào đây → HỌ ĐANG LỪA BẠN.",
+    `color:${theme.orange};font-size:14px;font-weight:bold;`
+  );
+
+  console.log(
+    "%cCode độc có thể đánh cắp token hoặc tài khoản.",
+    `color:${theme.red};font-size:14px;`
+  );
+
+  console.log(`%c${line}`, `color:${theme.gray};`);
+
+  console.log(
+    "%c⚡ Welcome to my website! ⚡",
+    `
+    color:${theme.green};
+    font-size:20px;
+    font-weight:bold;
+    text-shadow:0 0 8px ${theme.green};
+    `
+  );
+
+  console.log(
+    "%c💡 Available Commands:",
+    `color:${theme.blue};font-size:16px;font-weight:bold;`
+  );
+
+  console.log("%chelp()", "color:white;");
+  console.log("%cabout()", "color:white;");
+  console.log("%csocials()", "color:white;");
+  console.log("%cclear()", "color:white;");
+
+  console.log(`%c${line}`, `color:${theme.gray};`);
+
+  console.log(
+    "%c🐱 Powered by Thuysmao",
+    `
+    color:${theme.pink};
+    font-size:16px;
+    font-style:italic;
+    text-shadow:0 0 6px ${theme.pink};
+    `
+  );
+
+  // COMMANDS
+  window.help = () => {
+    console.log(
+      "%c📘 COMMAND LIST",
+      `color:${theme.cyan};font-size:20px;font-weight:bold;`
+    );
+    console.log("%chelp()      - Show commands", "color:white;");
+    console.log("%cabout()     - About site", "color:white;");
+    console.log("%csocials()   - Social links", "color:white;");
+    console.log("%cclear()     - Clear console", "color:white;");
+  };
+
+  window.about = () => {
+    console.log(
+      "%c🌐 THUYSMAO PROFILE WEBSITE",
+      `color:${theme.green};font-size:18px;font-weight:bold;`
+    );
+    console.log(
+      "%cFrontend • Effects • Discord Presence",
+      "color:white;"
+    );
+  };
+
+  window.socials = () => {
+    console.log(
+      "%c💬 Discord: niang1_",
+      `color:${theme.discord};font-size:16px;`
+    );
+    console.log(
+      "%c🐙 GitHub: github.com/diy2kar4",
+      "color:white;font-size:16px;"
+    );
+  };
+
+  window.clear = () => {
+    console.clear();
+    console.log(
+      "%cConsole cleared.",
+      `color:${theme.green};font-size:16px;font-weight:bold;`
+    );
+  };
 });
