@@ -8,14 +8,14 @@
   <meta name="description" content="ThuysMao's profile: Medical maid, imperial harem member, passionate about medicine and mysteries. Connect on Discord, Steam, and more.">
   <meta name="keywords" content="thuysmao, medical maid, imperial harem, profile, Discord, Steam, medicine, anime, Kusuriya, Faceit">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://profolio.blog/"/>
+  <link rel="canonical" href="https://diy2kay4.me/"/>
   <meta name="shimejiBrowserExtensionId" content="gohjpllcolmccldfdggmamodembldgpc" data-version="2.0.5">
 
   <!-- OG Tags -->
   <meta property="og:title" content="ThuysMao Profile - Medical Maid & Imperial Harem Enthusiast" />
   <meta property="og:description" content="ThuysMao's profile: Medical maid, imperial harem member, passionate about medicine and mysteries." />
   <meta property="og:image" content="https://profolio.blog/assets/favico/icon.png" />
-  <meta property="og:url" content="https://profolio.blog" />
+  <meta property="og:url" content="https://diy2kay4.me" />
   <meta property="og:type" content="website" />
 
   <!-- Fonts -->
@@ -103,11 +103,6 @@
         </div>
       </div>
 
-      <!-- Description -->
-      <!-- <div class="user-description">
-      //  <p id="user-description">chưa tày đâu</p>
-      //</div>
-
       <!-- Discord Widget -->
       <div class="discord-widget">
         <div class="discord-content">
@@ -136,14 +131,43 @@
 
   <div id="discord-no-activity">Đang không làm gì cả :D</div>
 </div>
+</div>
+</div>
+
+      <div id="system-panel" class="system-panel">
+        <button id="system-panel-toggle" class="system-panel-toggle" type="button">
+          <span class="toggle-icon">❯</span>
+        </button>
+      
+        <div class="system-panel-content">
+          <div id="loading-status" class="loading-status">
+            Initializing...
+          </div>
+      
+          <div class="theme-switcher">
+            <button class="theme-btn active" data-theme="cyber-neon">Cyber Neon</button>
+            <button class="theme-btn" data-theme="pink-anime">Pink Anime</button>
+            <button class="theme-btn" data-theme="dark-glass">Dark Glass</button>
+          </div>
+      
+          <div class="stats-block">
+            <div class="stat-item">
+              <span class="stat-label">Uptime</span>
+              <span id="stat-uptime" class="stat-value">0s</span>
+            </div>
+      
+            <div class="stat-item">
+              <span class="stat-label">Theme</span>
+              <span id="stat-theme" class="stat-value">cyber-neon</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
   <div id="page">
     <div id="scroll-container">
     <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-      <a href="zzz" download>
+      <a href="" download>
         chưa biết làm gì ở đây cả, nhưng có thể là một cái gì đó thú vị.
         <img src="./assets/pfp/heart.png" alt="Heart Icon" height="20" style="vertical-align: middle; margin-left: 8px;" />
       </a>
@@ -190,7 +214,7 @@
   </div>
 
   <div class="credit-line credit-visible">
-    ©2025 Maomao. Built from the ground up. All rights reserved.
+    ©2025 ThuysMão. Built from the ground up. All rights reserved.
   </div>
 
   <!-- Thêm dữ liệu có cấu trúc (schema.org) cơ bản -->
@@ -211,16 +235,56 @@
 </script>
 
   <!-- Scripts -->
+  <link rel="stylesheet" href="./assets/css/terminal.css" />
+
   <script src="./assets/js/error-handler.js"></script>
   <script src="./assets/js/console.js"></script>
+
   <script src="./assets/js/lanyard.js"></script>
   <script src="./assets/js/discord.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="./assets/js/script.js" defer></script>
+
   <script src="./assets/js/title.js"></script>
   <script src="./assets/js/username-animation.js"></script>
-  <script src="./assets/js/tilt-effect.js"></script>
   <script src="./assets/js/music-control.js"></script>
+  <script src="./assets/js/tilt-effect.js"></script>
   <script src="./assets/js/anti-debug.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <script src="./assets/js/terminal.js" defer></script>
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- Terminal Toggle Button -->
+  <button id="terminal-toggle" class="terminal-toggle">>_</button>
+
+  <div id="terminal-overlay" class="terminal-overlay hidden">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="terminal-title">thuysmao@system:~</div>
+        <button id="terminal-close" class="terminal-close">✕</button>
+      </div>
+  
+      <div id="terminal-body" class="terminal-body">
+        <div class="terminal-line term-accent">THUYSMAO terminal initialized.</div>
+        <div class="terminal-line">Type <span class="term-accent">help</span> to see available commands.</div>
+      </div>
+  
+      <form id="terminal-form" class="terminal-input-row" autocomplete="off">
+        <span class="prompt">thuysmao@system:~$</span>
+        <input
+          id="terminal-input"
+          class="terminal-input"
+          type="text"
+          spellcheck="false"
+          autocomplete="off"
+        />
+      </form>
+    </div>
+  </div>
 </body>
 </html>

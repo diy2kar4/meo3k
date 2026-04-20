@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuration object for easy customization
     const config = {
         usernames: [
+            "ThuysMão",
             "Maomao",
             "Māo Māo",
             "Xiǎo Māo",

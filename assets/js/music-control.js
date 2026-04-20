@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let isTerminalDone = false;
     let isPlaying = false;
     let isMuted = false;
-    let previousVolume = 1;
+    let previousVolume = 0.1;
+    const defaultVolume = 0.1;
     let currentMediaIndex = -1;
     let currentMode = 'music';
 
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleIcon = document.getElementById('toggleIcon');
 
     const mediaPairs = [
-        { video: "./assets/back/blackhole.mp4", weight: 50},
+        { video: "./assets/back/domain.mp4",audio: "./assets/back/domain.mp4", weight: 50},
     ];
 
     const imageMedia = [
@@ -163,9 +164,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setTimeout(() => {
         isPlaying = !audio.paused;
+    
+        volumeSlider.value = 10;
+        audio.volume = defaultVolume;
+        previousVolume = defaultVolume;
+    
         updatePlayButton();
         updateMuteButton();
-        audio.volume = volumeSlider.value / 100;
     }, 500);
 
     function switchToImageMode() {
