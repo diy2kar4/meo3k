@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const CONFIG = {
       githubUrl: "https://github.com/diy2kar4",
       discordUrl: "https://discord.com/users/985537688159522847",
+      facebookUrl: "https://www.facebook.com/kn1zmonster/",
+      steamUrl: "https://steamcommunity.com/profiles/76561199881574505/",
       discordUser: "niang1_",
       siteName: "THUYSMAO PROFILE WEBSITE"
     };
@@ -123,13 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
       addLine("help       - Show all commands");
       addLine("about      - About this site");
       addLine("whoami     - Short profile");
-      addLine("projects   - Featured projects");
       addLine("socials    - Show socials");
-      addLine("theme      - Show active theme");
-      addLine("discord    - Show current Discord status");
-      addLine("stats      - Show current site stats");
       addLine("banner     - ASCII banner");
-      addLine("neofetch   - Show system info");
       addLine("matrix     - Start matrix mode");
       addLine("stop matrix       - Stop matrix mode");
       addLine("open github  - Open GitHub");
@@ -148,75 +145,13 @@ document.addEventListener("DOMContentLoaded", () => {
       addLine("Building stylish frontend experiences.", "term-info");
     }
   
-    function printProjects() {
-      addLine("Featured projects:", "term-accent");
-      addLine("- Profile Website");
-      addLine("- Discord Presence Widget");
-      addLine("- Console Command System");
-      addLine("- Animated Media Background");
-    }
-  
     function printSocials() {
       addLine(`Discord: ${CONFIG.discordUser}`, "term-info");
       addLine(`GitHub: ${CONFIG.githubUrl}`, "term-info");
-    }
-  
-    function printNeofetch() {
-      const uptime = Math.floor(performance.now() / 1000);
-      addLine("       .--.        thuysmao@system", "term-pink");
-      addLine("      |o_o |       ─────────────────", "term-pink");
-      addLine("      |:_/ |       OS: THUYSMAO Web Terminal", "term-info");
-      addLine("     //   \\ \\      Shell: custom-js", "term-info");
-      addLine("    (|     | )     Theme: cyber-neon", "term-info");
-      addLine("   /'\\_   _/`\\\\    Uptime: " + uptime + "s", "term-info");
-      addLine("   \\___)=(___/     User: " + CONFIG.discordUser, "term-info");
+      addLine(`Facebook: ${CONFIG.facebookUrl}`, "term-info");
+      addLine(`Steam: ${CONFIG.steamUrl}`, "term-info");
     }
 
-    function printThemeInfo() {
-        const activeTheme =
-          localStorage.getItem("site-theme") ||
-          [...document.body.classList].find(cls =>
-            ["cyber-neon", "pink-anime", "dark-glass", "red-alert"].includes(cls)
-          ) ||
-          "cyber-neon";
-      
-        addLine("ACTIVE THEME", "term-accent");
-        addLine(activeTheme, "term-info");
-      }
-      
-      function printDiscordInfo() {
-        const username = document.getElementById("discord-username")?.textContent?.trim() || CONFIG.discordUser;
-        const activityName = document.getElementById("discord-activity-name")?.textContent?.trim() || "No current activity";
-        const activityDetails = document.getElementById("discord-activity-details")?.textContent?.trim() || "";
-        const activityState = document.getElementById("discord-activity-state")?.textContent?.trim() || "";
-      
-        let status = "offline";
-        const dot = document.getElementById("discord-status-dot");
-        if (dot?.classList.contains("status-online")) status = "online";
-        else if (dot?.classList.contains("status-idle")) status = "idle";
-        else if (dot?.classList.contains("status-dnd")) status = "dnd";
-      
-        addLine("DISCORD STATUS", "term-accent");
-        addLine(`User: ${username}`, "term-info");
-        addLine(`Presence: ${status}`, "term-info");
-        addLine(`Activity: ${[activityName, activityDetails, activityState].filter(Boolean).join(" — ")}`, "term-info");
-      }
-      
-      function printStatsInfo() {
-        const uptime = document.getElementById("stat-uptime")?.textContent || "0s";
-        const theme = document.getElementById("stat-theme")?.textContent || "cyber-neon";
-        const media = document.getElementById("stat-media")?.textContent || "Unknown";
-        const discord = document.getElementById("stat-discord")?.textContent || "offline";
-        const song = document.getElementById("stat-song")?.textContent || "None";
-      
-        addLine("SITE STATS", "term-accent");
-        addLine(`Uptime: ${uptime}`, "term-info");
-        addLine(`Theme: ${theme}`, "term-info");
-        addLine(`Media: ${media}`, "term-info");
-        addLine(`Discord: ${discord}`, "term-info");
-        addLine(`Song: ${song}`, "term-info");
-      }
-  
     function runCommand(raw) {
       const command = raw.trim();
       const lower = command.toLowerCase();
@@ -240,11 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
   
-      if (lower === "projects") {
-        printProjects();
-        return;
-      }
-  
       if (lower === "socials") {
         printSocials();
         return;
@@ -252,11 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
       if (lower === "banner") {
         printBanner();
-        return;
-      }
-  
-      if (lower === "neofetch") {
-        printNeofetch();
         return;
       }
   
@@ -290,21 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (lower === "open discord") {
         window.open(CONFIG.discordUrl, "_blank", "noopener,noreferrer");
         addLine("Opening Discord...", "term-accent");
-        return;
-      }
-
-      if (lower === "theme") {
-        printThemeInfo();
-        return;
-      }
-      
-      if (lower === "discord") {
-        printDiscordInfo();
-        return;
-      }
-      
-      if (lower === "stats") {
-        printStatsInfo();
         return;
       }
   
