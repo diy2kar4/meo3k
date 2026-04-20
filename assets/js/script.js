@@ -18,11 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
   if (blurredBox) blurredBox.style.display = 'none';
 
   const terminalTextContent = [
-    "User: ch34t3r",
+    "[BOOT] Initializing THUYSMAO OS v3.0...",
+    "[BOOT] Loading profile core...",
     "IP: Loading...",
-    "System: Loading...",
-    "Bio Loaded",
-    "Click To enter...",
+    "[SYNC] Connecting Discord presence...",
+    "[SYNC] Loading media engine...",
+    "[OK] All systems online.",
+    "Press Enter or click to continue..."
   ];
   let currentIndex = 0;
 
@@ -40,7 +42,14 @@ document.addEventListener('DOMContentLoaded', function () {
       if (i < line.length) {
         terminalText.textContent += line.charAt(i);
         i++;
-        typingTimeout = setTimeout(typeChar, 50);
+        const speed =
+  line.startsWith("[BOOT]") || line.startsWith("[SYNC]") || line.startsWith("[OK]")
+    ? 22
+    : line.startsWith("user@")
+    ? 38
+    : 28;
+
+typingTimeout = setTimeout(typeChar, speed);
       } else {
         terminalText.textContent += "\n";
         currentIndex++;
@@ -238,8 +247,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // 🎨 ASCII
   function getAsciiArt() {
     return `
-      Your IP is being traced...
-    `;
+  ┌───────────────────────┐
+  │      THUYSMAO OS      │
+  └───────────────────────┘
+  `;
   }
 
   // 🔊 Giới hạn âm lượng
